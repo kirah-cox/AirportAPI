@@ -1,0 +1,14 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: airport-api
+    ports:
+      - "8080:8080"
+    # Passes DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASSWORD into the container.
+    env_file:
+      - .env
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    restart: unless-stopped
